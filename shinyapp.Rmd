@@ -1,3 +1,18 @@
+---
+title: "shiny for iris"
+author: "Debojyoti Das"
+date: "1/16/2023"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+
+```{r pressure, echo=FALSE}
 library(shiny)
 
 # Define UI for miles per gallon app ----
@@ -69,3 +84,7 @@ server <- function(input, output) {
 }
 
 shinyApp(ui, server)
+
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
