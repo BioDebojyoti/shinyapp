@@ -43,7 +43,13 @@ ui <- pageWithSidebar(
     h3(textOutput("caption")),
     
     # Output: Plot of the requested variable against mpg ----
-    plotOutput("irisPlot")
+    plotOutput("irisPlot"),
+    
+    # h3(textOutput("histo")),
+    
+    # Output: Plot of the requested variable against mpg ----
+    plotOutput("irisHistogram")
+    
   )
 )
 
@@ -80,6 +86,21 @@ server <- function(input, output) {
             border='black')
   
   })
+  
+  data2plot <- reactive({
+    as.vector(unlist(iris[dependentVariable()]))
+    })
+  
+  # output$histo <- renderText({
+  #  data2plot()
+  # })
+  
+  
+  output$irisHistogram <- renderPlot({
+    #create boxplot
+    hist(data2plot(), xlab = dependentVariable(), main = dependentVariable())
+  })
+  
 
 }
 
