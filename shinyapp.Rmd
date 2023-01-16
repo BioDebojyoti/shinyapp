@@ -42,12 +42,12 @@ ui <- pageWithSidebar(
     # Output: Formatted text for caption ----
     h3(textOutput("caption")),
     
-    # Output: Plot of the requested variable against mpg ----
+    # Output: Plot of the requested variable ----
     plotOutput("irisPlot"),
     
     # h3(textOutput("histo")),
     
-    # Output: Plot of the requested variable against mpg ----
+    # Output: Histogram of the requested variable  ----
     plotOutput("irisHistogram")
     
   )
@@ -59,7 +59,7 @@ server <- function(input, output) {
   
   # Compute the formula text ----
   # This is in a reactive expression since it is shared by the
-  # output$caption and output$mpgPlot functions
+  # output$caption and output$irisPlot aand output$irisHistogram functions
   formulaText <- reactive({
     paste(input$variable, " ~ Species")
   })
@@ -90,10 +90,6 @@ server <- function(input, output) {
   data2plot <- reactive({
     as.vector(unlist(iris[dependentVariable()]))
     })
-  
-  # output$histo <- renderText({
-  #  data2plot()
-  # })
   
   
   output$irisHistogram <- renderPlot({
