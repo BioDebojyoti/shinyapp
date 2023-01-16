@@ -1,1 +1,1 @@
-# shinyapp for iris data
+# shiny app for iris data
